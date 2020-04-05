@@ -1,0 +1,37 @@
+package com.spring.operation;
+
+import java.util.Scanner;
+
+public class ArrayTest {
+    public static void main(String[] args){
+        int n;
+        Scanner read = new Scanner(System.in);
+        System.out.printf("请输入数组长度：");
+        n=read.nextInt();
+        System.out.printf(n+"\n");
+        int array[] = new int[n];
+        for(int i=0;i<n;i++){
+            int getIndex = i+1;
+            System.out.printf("请输入第"+getIndex+"个数：");
+            array[i]=read.nextInt();
+            //System.out.printf("\n");
+        }
+        int result = getResult(array);
+        System.out.printf("结果为："+result);
+    }
+    public static int getResult(int[] array){
+        int nowSum=array[0];
+        int maxSum=array[0];
+        for(int i=1;i<array.length;i++){
+            if(nowSum>0){
+                nowSum += array[i];
+            }else{
+                nowSum = array[i];
+            }
+            if(nowSum > maxSum){
+                maxSum = nowSum;
+            }
+        }
+        return maxSum;
+    }
+}
